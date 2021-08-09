@@ -1,5 +1,4 @@
-// legend /2-Before/Activities/04-Par_MoneyChoropleth/Solved/Money_Choropleth.html
-// Store our API endpoint inside queryUrl
+
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 console.log(queryUrl)
 
@@ -15,33 +14,25 @@ L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?acce
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Perform a GET request to the query URL
+
 d3.json(queryUrl).then(function(data) {
-  // Once we get a response, send the data.features object to the createFeatures function
   createFeatures(data.features);
 });
 
-// Create a map object
-function createFeatures(earthquakeData){
 
-    console.log ("earthquakeData =", earthquakeData );
-    console.log ("earthquakeData lenght =", earthquakeData.length );
-    
-    // Loop through the cities array and create one marker for each city object
+function createFeatures(earthquakeData){
+   
     for (var i = 0; i < earthquakeData.length - 1; i++) {
-    //for (var i = 0; i < 10; i++) {
-      // Conditionals for countries points
+    
       var longitude = earthquakeData[i].geometry.coordinates[0];
       var latitude = earthquakeData[i].geometry.coordinates[1];
       var depth = earthquakeData[i].geometry.coordinates[2];
       var location = [];
       location[0] = latitude ;
       location[1] = longitude;
-      //console.log("location=",location);
-      //console.log("depth=",depth);
+      var colors = ["Crimson", "Tomato", "Orange", "Gold", "GreenYellow", "LimeGreen"];
       
       var color = "";
-      //if (countries[i].points >= 200) {
       if (depth >= 90) {
         color = "Crimson";
       }
@@ -63,19 +54,16 @@ function createFeatures(earthquakeData){
       else {
         color = "Blue";
       }
-      // Add circles to map
+     
       L.circleMarker(location, {
         fillOpacity: 1,
         color: "gray",
         weight: 1,
         fillColor: color,
-        // Adjust radius
         radius: earthquakeData[i].properties.mag * 3
       }).bindPopup("<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
     }
 
-
-    // Set up the legend
     var legend = L.control({ position: "bottomright" });
     
     legend.onAdd = function() {
@@ -95,10 +83,6 @@ function createFeatures(earthquakeData){
       return div;
     };
 
-    // Adding legend to the map
     legend.addTo(myMap);
-
-    
-
 
 }
