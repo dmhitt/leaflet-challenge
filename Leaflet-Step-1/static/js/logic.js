@@ -59,7 +59,7 @@ function createFeatures(earthquakeData){
         color = "PaleGreen";
       }
       else {
-        color = "white";
+        color = "Blue";
       }
       // Add circles to map
       L.circleMarker(location, {
@@ -68,7 +68,7 @@ function createFeatures(earthquakeData){
         weight: 1,
         fillColor: color,
         // Adjust radius
-        radius: earthquakeData[i].properties.mag * 4
+        radius: earthquakeData[i].properties.mag * 3
       }).bindPopup("<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
     }
 }
