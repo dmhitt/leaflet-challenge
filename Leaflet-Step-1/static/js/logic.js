@@ -29,8 +29,7 @@ function createFeatures(earthquakeData){
       var location = [];
       location[0] = latitude ;
       location[1] = longitude;
-      
-      
+            
       var color = "";
       if (depth >= 90) {
         color = "Crimson";
@@ -63,7 +62,6 @@ function createFeatures(earthquakeData){
       }).bindPopup("<h4> Place: " + earthquakeData[i].properties.place + "</h4> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"&nbsp&nbsp&nbsp| &nbsp&nbsp Depth: "+ depth +"</h4>").addTo(myMap);
     }
 
-    //"<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
     var legend = L.control({ position: "bottomright" });
     
     legend.onAdd = function() {
