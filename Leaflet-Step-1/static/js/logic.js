@@ -19,7 +19,6 @@ d3.json(queryUrl).then(function(data) {
   createFeatures(data.features);
 });
 
-
 function createFeatures(earthquakeData){
    
     for (var i = 0; i < earthquakeData.length - 1; i++) {
@@ -61,9 +60,10 @@ function createFeatures(earthquakeData){
         weight: 1,
         fillColor: color,
         radius: earthquakeData[i].properties.mag * 3
-      }).bindPopup("<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
+      }).bindPopup("<h4> Place: " + earthquakeData[i].properties.place + "</h4> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"&nbsp&nbsp&nbsp| &nbsp&nbsp Depth: "+ depth +"</h4>").addTo(myMap);
     }
 
+    //"<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
     var legend = L.control({ position: "bottomright" });
     
     legend.onAdd = function() {
@@ -72,7 +72,7 @@ function createFeatures(earthquakeData){
       var colors = ["LimeGreen", "GreenYellow",  "Gold", "Orange", "Tomato", "Crimson" ];
       var labels = [];
 
-     var legendInfo = "<p><center> Eathquake Depth </center> </p>";
+      var legendInfo = "<p><center> EQ Depth </center> </p>";
       div.innerHTML = legendInfo;
 
       limits.forEach(function(limit, index) {
