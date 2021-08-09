@@ -69,6 +69,6 @@ function createFeatures(earthquakeData){
         fillColor: color,
         // Adjust radius
         radius: earthquakeData[i].properties.mag * 4
-      }).bindPopup("<h1>" + earthquakeData[i].properties.mag + "</h1> <hr>").addTo(myMap);
+      }).bindPopup("<h3> Place: " + earthquakeData[i].properties.place + "</h3> <hr> <h4>Magnitude: "+ earthquakeData[i].properties.mag +"</h4> <hr> <h5>Depth: "+ depth +"</h4>").addTo(myMap);
     }
 }
