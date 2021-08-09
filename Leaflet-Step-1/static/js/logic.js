@@ -30,7 +30,7 @@ function createFeatures(earthquakeData){
       var location = [];
       location[0] = latitude ;
       location[1] = longitude;
-      var colors = ["Crimson", "Tomato", "Orange", "Gold", "GreenYellow", "LimeGreen"];
+      
       
       var color = "";
       if (depth >= 90) {
@@ -68,8 +68,8 @@ function createFeatures(earthquakeData){
     
     legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
-      var limits = ["90+", "70-90", "50-70", "30-50", "10-30", "-10-10"];
-      var colors = ["Crimson", "Tomato", "Orange", "Gold", "GreenYellow", "LimeGreen"];
+      var limits = ["-10-10","10-30","30-50","50-70","70-90","90+" ];
+      var colors = ["LimeGreen", "GreenYellow",  "Gold", "Orange", "Tomato", "Crimson" ];
       var labels = [];
 
      var legendInfo = "<p><center> Eathquake Depth </center> </p>";
