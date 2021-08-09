@@ -64,7 +64,7 @@ function createFeatures(earthquakeData){
       // Add circles to map
       L.circleMarker(location, {
         fillOpacity: 0.75,
-        color: "white",
+        color: "gray",
         fillColor: color,
         // Adjust radius
         radius: earthquakeData[i].properties.mag * 4
